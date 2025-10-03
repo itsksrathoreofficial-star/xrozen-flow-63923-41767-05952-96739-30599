@@ -28,6 +28,10 @@ import EditorWorkSheet from "./pages/EditorWorkSheet";
 import ClientWorkSheet from "./pages/ClientWorkSheet";
 import XrozenAIPage from "./pages/XrozenAI";
 import NotFound from "./pages/NotFound";
+import SubscriptionSelect from "./pages/SubscriptionSelect";
+import AdminSubscriptions from "./pages/AdminSubscriptions";
+import AdminPlansManagement from "./pages/AdminPlansManagement";
+import AdminSettings from "./pages/AdminSettings";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +57,10 @@ const App = () => (
           <Route path="/admin/projects" element={<AdminProjects />} />
           <Route path="/admin/payments" element={<AdminPayments />} />
           <Route path="/admin/logs" element={<AdminLogs />} />
+          <Route path="/admin/subscriptions" element={<AdminSubscriptions />} />
+          <Route path="/admin/plans-management" element={<AdminPlansManagement />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
+          <Route path="/subscription-select" element={<SubscriptionSelect />} />
           <Route path="/editors" element={<Editors />} />
           <Route path="/editors/:editorId/worksheet" element={<EditorWorkSheet />} />
           <Route path="/clients" element={<Clients />} />
