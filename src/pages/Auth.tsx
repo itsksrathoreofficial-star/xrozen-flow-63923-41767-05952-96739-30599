@@ -62,8 +62,9 @@ const Auth = () => {
       if (error) throw error;
 
       if (data.user) {
-        toast.success("Account created successfully! Please check your email to verify.");
-        setIsSignUp(false);
+        toast.success("Account created successfully!");
+        // Redirect to subscription selection page
+        navigate("/subscription-select");
       }
     } catch (error: any) {
       toast.error(error.message || "Failed to sign up");
@@ -83,6 +84,23 @@ const Auth = () => {
       });
 
       if (error) throw error;
+
+      // Check if user has subscription
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: subscription } = await supabase
+          .from("user_subscriptions" as any)
+          .select("*")
+          .eq("user_id", user.id)
+          .single();
+
+        if (!subscription) {
+          // No subscription, redirect to subscription page
+          toast.info("Please select a subscription plan");
+          navigate("/subscription-select");
+          return;
+        }
+      }
 
       toast.success("Signed in successfully!");
       navigate("/dashboard");

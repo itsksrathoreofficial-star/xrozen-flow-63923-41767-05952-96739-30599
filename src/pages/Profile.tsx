@@ -200,8 +200,18 @@ const Profile = () => {
                     )}
 
                     <div className="flex gap-2">
-                      <Button className="gradient-primary">Upgrade Plan</Button>
-                      <Button variant="outline">Billing History</Button>
+                      <Button 
+                        className="gradient-primary"
+                        onClick={() => navigate("/subscription-select")}
+                      >
+                        Upgrade Plan
+                      </Button>
+                      <Button 
+                        variant="outline"
+                        onClick={() => navigate("/admin/subscriptions")}
+                      >
+                        Billing History
+                      </Button>
                     </div>
                   </div>
                 </CardContent>
